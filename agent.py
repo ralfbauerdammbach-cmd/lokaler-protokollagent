@@ -174,7 +174,7 @@ class Application:
         self.title = tk.StringVar(value="Besprechungsprotokoll")
         self.date = tk.StringVar()
         self.people = tk.StringVar()
-        self.model = tk.StringVar(value="qwen2.5:7b")
+        self.model = tk.StringVar(value="qwen3:8b")
         self.whisper = tk.StringVar(value="small")
         self.language = tk.StringVar(value="de")
         self.status = tk.StringVar(value="Bereit")

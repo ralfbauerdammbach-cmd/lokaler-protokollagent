@@ -1,10 +1,20 @@
 @echo off
 cd /d "%~dp0"
-python -c "import faster_whisper, docx" >nul 2>&1
+py --version >nul 2>&1
+if errorlevel 1 (
+  echo Python-Launcher py wurde nicht gefunden.
+  pause
+  exit /b 1
+)
+py -c "import faster_whisper, docx" >nul 2>&1
 if errorlevel 1 (
   echo Installiere fehlende Python-Pakete...
-  python -m pip install -r requirements.txt
-  if errorlevel 1 (pause & exit /b 1)
+  py -m pip install -r requirements.txt
+  if errorlevel 1 (
+    echo Paketinstallation fehlgeschlagen.
+    pause
+    exit /b 1
+  )
 )
-python agent.py
+py agent.py
 if errorlevel 1 pause
